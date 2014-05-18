@@ -6,7 +6,7 @@ require_once('php/function.php');
 	echo " logging out";
 	
 	$session -> destroySession();
-	#$_SESSION= array();
+	$_SESSION= array();
 	
 	header('Location = cover.php');
 

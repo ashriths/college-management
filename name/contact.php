@@ -8,20 +8,11 @@
 
     <title>Cover Template for Bootstrap</title>
 
-    <!-- Bootstrap core CSS -->
+    
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
     <link href="bootstrap/css/cover.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
   <style id="holderjs-style" type="text/css"></style></head>
 
   <body>
@@ -36,8 +27,8 @@
             <div class="inner">
               <h3 class="masthead-brand" style="font-weight:normal;">BMSCE</h3>
               <ul class="nav masthead-nav">
-                <li ><a href="home.php">Home</a></li>
-                <li><a href="login.php">Login</a></li>
+                <li ><a href="cover.php">Home</a></li>
+                <li><a href="login2.php">Login</a></li>
                 <li class="active"><a href="contact.php">Contact</a></li>
               </ul>
             </div>

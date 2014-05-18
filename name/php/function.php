@@ -26,9 +26,30 @@ class User{
 		return $id;
 	}
 
-	public function getUserDetailsbyId($id){
+	//returns details ofa table searched with nonkey value
+	public function getTableDetailsbyNonId($table,$att,$nid)
+	{
 		$db = User::setupDatabase();
-		$sql = "SELECT * FROM student WHERE userId = '$id'";
+		$sql = "SELECT * FROM $table WHERE $att = '$nid'";
+		$result = $db->query($sql);
+		if(!$result){	
+			die('Error:'.$db->error);
+		}
+		//return multiple rows when query fetches more than one
+		/*
+		if(mysqli_num_rows($result)>1){
+		$rows = array();
+    		while($row = $result->fetch_assoc()) {
+       			 $rows[] = $row;
+    		}
+		return $rows;
+		} */
+		return $result;
+	}
+	//generic function param(tablename,attribute,value)
+	public function getTableDetailsbyId($table,$att,$id){
+		$db = User::setupDatabase();
+		$sql = "SELECT * FROM $table WHERE $att = '$id'";
 		$result = $db->query($sql);
 		if(!$result){	
 			die('Error:'.$db->error);
@@ -37,6 +58,7 @@ class User{
 		return $user;
 
 	}
+	
 
 	public function validateUser($usn,$password){
 		$db = User::setupDatabase();
@@ -60,11 +82,11 @@ class User{
 			}
 			else{
 				echo 'User Entered Wrong password';
-				return 0;
+				return 0; #password
 			}
 		}else{
 			echo 'User Not Found';
-			return 0;
+			return 0;#for no usn
 		}
 	}
 }
@@ -74,6 +96,10 @@ $user = new User();
 class Session{
 	public function createSession($id){
 		$_SESSION['id']=$id;
+	}
+	public function createSessionTemp($var)
+	{
+		$_SESSION['temp']=$var;
 	}
 
 	function __construct(){
