@@ -3,22 +3,14 @@ require ('redirect.php');
 require('design.php');
 require('php/function.php');
 
+
 if(!isset($_SESSION['id'])){
   //redirect
   echo 'Redirect';
 }
-$u = $user->getTableDetailsbyId('student','userId',$_SESSION['id']);
+$u = $user->getUserDetailsById($_SESSION['id']);
 //rint_r($u);
 $rp = './';
-echo $u['name'];
-
-
-echo $u['classId'];
-echo $u['usn'];
-
-$class = $user->getTableDetailsbyId("class","classId",$u['classId']);
-echo $class['sem'];
-echo $class['section'];
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -52,28 +44,9 @@ echo $class['section'];
       <div class="container" >
         <p style="margin:10pt 30pt 30pt 40pt;padding:20pt 40pt 20pt 20pt;">
           <b> &nbsp Name: </b><?php echo $u['name']; ?> <br/>
-          <b> &nbsp Branch: </b> <?php //echo $class['deptId'];
-          			
-          			$dept = $user->getTableDetailsbyId('dept','deptId',$class['deptId']);
-          			echo $dept['name'];
-          			
-					/*
-          			$cls= $user->getTableDetailsbyNonId('student','classId',$u['classId']);
-
-          			foreach ($cls as $key => $value) {
-          				echo "<br/>key: $key =>";
-          				foreach ($value as $key2 => $value2) { //for 2D array in case of multiple rows
-          					echo "<br/> $key2=> $value2";
-          					# code...
-          				}
-          			}
-          			//code to print associative array
-					*/	
-
-
-          ?> <br/>
-          <b> &nbsp Semester: </b><?php echo $class['sem']; ?><br/>
-          <b> &nbsp e-mail: </b><?php echo $u['email']; ?><br/>  <!-- student info -->
+          <b> &nbsp Branch: </b>C.S.E <br/>
+          <b> &nbsp Semester: </b>6,<br/>
+          <b> &nbsp e-mail: </b>bla bla bla<br/>  <!-- student info -->
         </p>
       </div>
       

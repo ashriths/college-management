@@ -1,37 +1,21 @@
 <?php
 require_once('redirect.php');
 require_once('php/function.php');
-$temp="";
-#this is to get temp value of usn passed by temp session
-if(isset($_SESSION['temp']))
-{
-  $temp = $_SESSION['temp'];
-  $session->destroySession();
-  $_SESSION =array();
-}
-else
-{
-    }
-
 if(isset($_SESSION['id'])){
   //redirect to homepage
   #Redirect::redirectTo('home.php');
 
   header("Location: home.php");
 }
-
 if(isset($_POST['usn'])){
   $result = $user->validateUser($_POST['usn'],$_POST['password']);
-  if($result>0){
+  if($result){
     $session->createSession($result);
-    echo "result id: $result";
     header("Location: home.php");
-
   }
-  else
-    header("Location: login.php");
   
 }
+print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,15 +52,11 @@ if(isset($_POST['usn'])){
 
         <h2>BMSCEAPP</h2>
         <h4>Initialize Awesomeness</h4>
-        <h4 style="color:red;">Invalid USN Password </h4>
+        
         </div>
-      <form class="form-signin" role="form" action="" method="post">
+      <form class="form-signin" role="form" action="login.php" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="form-control" name="usn" id="usn" value="<?php echo $temp;?>" placeholder="USN"  required autofocus>
-        <?php 
-          echo "result is : $temp";
-          ##usn posted from previous page
-        ?>
+        <input type="text" class="form-control" name="usn" placeholder="USN" required autofocus>
         <input type="password" class="form-control" name="password" placeholder="Password" required>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
@@ -84,7 +64,7 @@ if(isset($_POST['usn'])){
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
 
-    </div> 
+    </div> <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript
